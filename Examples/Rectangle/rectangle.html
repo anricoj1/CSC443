@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Rectangles </title>
+  </head>
+
+  <body>
+    <script langauge="JavaScript">
+      <!--
+        // w h  c
+        function area(){ return this.w*this.h; }
+        function getH() { return this.h;}
+        function setH(h) { this.h = h; }
+        function getW() { return this.w; }
+        function setW(w) { this.w = w; }
+        function getC() { return this.c; }
+        function setC(c) { this.c =c; }
+
+        function print() {
+          document.write("<div style='height:"+this.h+
+                          "px;width:"+this.w+
+                          "px;background-color:"+this.c+
+                          ";'> &nbsp;</div>");
+          }
+
+          function R(w,h,c) {
+            if(w<=0) w=5;
+            if(h<=0) h=5;
+            this.w=w;
+            this.h=h;
+            this.c=c;
+            this.area = area;
+            this.getH = getH;
+            this.setH = setH;
+            this.getW = getW;
+            this.setW = setW;
+            this.getC = getC;
+            this.setC = setC;
+            this.print = print;
+          }
+
+          a = new R(50,20,"#ff0000");
+          b = new R(100,50,"#00ff00");
+
+          a.print();
+          b.print();
+
+          for(var i=1;i<=5;i++) {
+            c = new R(i*30,i*10,"#0000"+i+i);
+            c.print();
+          }
+        //-->
+      </script>
+    </body>
+</html>
