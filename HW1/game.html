@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Interactive Game</title>
     <style>
       canvas {
@@ -14,6 +14,190 @@
 
   <body>
     <canvas id="myCanvas" width="1024" height="720"></canvas>
+
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      var x = canvas.width/2;
+      var y = canvas.height-30;
+      var dx = 4;
+      var dy = -4;
+      var ballRadius = 10;
+      
+      // left paddle
+      var lPaddHeight = 90;
+      var lPaddWidth = 15;
+      var lPaddX = 5;
+      var lPaddY = canvas.height / 2 - lPaddHeight / 2;
+
+      // right paddle
+      var rPaddHeight = 90;
+      var rPaddWidth = 15;
+      var rPaddX = canvas.width - (rPaddWidth + 5);
+      var rPaddY = canvas.height / 2 - rPaddHeight / 2;
+
+      // bool key handles
+      var lUp = false;
+      var lDown = false;
+      var rUp = false;
+      var rDown = false;
+
+      // inital scores
+      var lScore = 0;
+      var rScore = 0;
+
+      
+      // keystroke down handler
+      function keyDown(e) {
+        if(e.keyCode == 81) {
+          lUp = true;
+        }
+        else if (e.keyCode == 87) {
+          lDown = true;
+        }
+        if (e.keyCode == 38) {
+          rUp = true;
+        }
+        else if (e.keyCode == 40) {
+          rDown = true;
+        }
+      }
+
+      // keystroke up handler
+      function keyUp(e) {
+        if(e.keyCode == 81) {
+          lUp = false;
+        }
+        else if (e.keyCode == 87) {
+          lDown = false;
+        }
+        if (e.keyCode == 38) {
+          rUp = false;
+        }
+        else if (e.keyCode == 40) {
+          rDown = false;
+        }
+      }
+
+      // ball function
+      function showBall() {
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      // drawing scores function
+      function showScores() {
+        ctx.font = "60px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(lScore, (canvas.width / 2) - 90, 80);
+        ctx.fillText(rScore, (canvas.width / 2) + 50, 80);
+      }
+
+      // collison left
+      function lPaddCollide() {
+        if ((x - ballRadius) <= 5 + lPaddWidth) {
+          if (y > lPaddY && y < lPaddY + lPaddHeight)
+            dx = -dx;
+          else if ((x - ballRadius) <= 0) {
+            rScore ++;
+
+            x = canvas.width / 2;
+            y = canvas.height / 2;
+            dx = -dx;
+            dy = -dy;            
+          }
+        }
+      }
+
+      // collision right
+      function rPaddCollide() {
+        if ((x + ballRadius) >= canvas.width - (rPaddWidth + 5)) {
+          if (y > rPaddY && y < rPaddY + rPaddHeight)
+            dx = -dx;
+          else if (x + ballRadius >= canvas.width) {
+            lScore++;
+            x = canvas.width / 2;
+            y = canvas.height / 2;
+
+            dx = -dx;
+            dy = -dy;     
+          }
+        }
+      }
+
+      // detecting a collison
+      function detectCollision() {
+        lPaddCollide();
+        rPaddCollide();
+        if (((y - ballRadius) <= 0) || ((y + ballRadius) >= canvas.height)) {
+          dy = -dy;
+        }
+      }
+
+      // drawing left paddle
+      function showlPadd() {
+        ctx.beginPath();
+        ctx.rect(lPaddX, lPaddY, lPaddWidth, lPaddHeight);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+        if (lDown && lPaddY < canvas.height - lPaddHeight) {
+          lPaddY += 7;
+        }
+        else if (lUp && lPaddY > 0) {
+          lPaddY -= 7;
+        }
+      }
+
+      // drawing right paddle
+      function showrPadd() {
+        ctx.beginPath();
+        ctx.rect(rPaddX, rPaddY, rPaddWidth, rPaddHeight);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+        if (rDown && rPaddY < canvas.height - rPaddHeight) {
+          rPaddY += 7;
+        }
+        else if (rUp && rPaddY > 0) {
+          rPaddY -= 7;
+        }
+      }
+
+      // drawing the scene
+      function showCanvas() {
+        ctx.beginPath();
+        ctx.rect(canvas.width / 2 - 1, 0, 3, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.closePath();
+      } 
+
+      // draw all
+      function showAll() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        showScores();
+        showCanvas();
+        showlPadd();
+        showrPadd();
+        showBall();
+        detectCollision();
+
+        x += dx;
+        y += dy;
+      }
+
+      // event listeners and handlers
+      setInterval(showAll, 10);
+      document.addEventListener("keydown", keyDown, false);
+      document.addEventListener("keyup", keyUp, false);
+
+
+
+    </script>
 
   </body>
 
