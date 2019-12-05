@@ -103,26 +103,26 @@ $(document).ready(function() {
     }
 
     const newBoard = board => {
-        for (var i=0; i < board.length; i++) {
-            for(var j=0; j < board[i].length; j++) {
+        for (var i = 0; i < board.length; i++) {
+            for(var j = 0; j < board[i].length; j++) {
                 let thisTile = document.querySelector(`div[data-row='${i}'][data-col='${j}']`);
                 switch (board[i][j]) {
-                    case 0:
+                    case 0: // dot
                         thisTile.className = 'dot';
                         break;
-                    case 1:
+                    case 1: // wall
                         thisTile.className = 'wall';
                         break;
-                    case 2:
+                    case 2: // side ports
                         thisTile.className = 'portal';
                         break;
-                    case 6:
+                    case 6: // blank space
                         thisTile.className = 'space';
                         break;
-                    case 8:
+                    case 8: // large dor
                         thisTile.className = 'lg-dot';
                         break;
-                    case 'p':
+                    case 'P': // pacman
                         thisTile.className = 'release pacman';
                         break;
                 }
@@ -185,7 +185,7 @@ $(document).ready(function() {
             this.x = x;
             this.y = y;
             this.i = 0;
-            this.speed = speed;
+            this.speed = speed
         }
         
         testTile() {
@@ -196,7 +196,7 @@ $(document).ready(function() {
                         this.test = true;
                     } else {
                         if (this.tile.classList.contains('portal')) {
-                            if (this.tile.dataset.column == '27') {
+                            if (this.tile.dataset.col === "27") {
                                 this.y = 0;
                             } else {
                                 this.y = 27;
@@ -324,11 +324,11 @@ $(document).ready(function() {
                 this.tile.classList.remove('dot');
                 board[this.x][this.y] = 6;
             }
-            let tmpScore = 200 * thia.numEaten;
-            styleThis.innerHTML = 
+            let tmpScore = 200 * this.numberEaten;
+            styleThis.innerHTML = `.pacman::after {content:'${tmpScore}';}`;
             setTimeout(() => {
                 styleThis.innerHTML = ` `
-            }, 500);
+            }, 10000);
             score += tmpScore;
             this.numEaten ++;
 
