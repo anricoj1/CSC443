@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: .1rem;
+    background-color: black;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game {
+    position: relative;
+    width: fit-content;
+    background-color: black;
+}
+
+.shade {
+    position: absolute;
+    z-index: 1;
+    width: 12%;
+    height: 4.7%;
+    background: black;
+}
+
+.shade:first-of-type {
+    background: linear-gradient(to left, rgba(0,0,0,0) 10%, black 30%);
+    top: 38.3%;
+    left: -10%;
+}
+
+.shade:nth-of-type(2) {
+    background: linear-gradient(to right, rgba(0,0,0,0) 10%, black 30%);
+    top: 38.3%;
+    right: -10%; 
+}
+
+.container {
+    width: 466px;
+    height: 512px;
+    margin: 42px auto 8px auto;
+    display: grid;
+    grid-template: repeat(31, 16.5px) / repeat(28, 16.6px);
+    background-image: url('../images/grid/board.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+img:nth-of-type(2),
+img:nth-of-type(3),
+img:nth-of-type(4) {
+    visibility: hidden;
+}
+
+.release.pacman {
+    background-size: 16px 15.4px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.pacman-left {
+    background-image: url('../images/pix/pacman_L.gif');
+}
+
+.pacman-right {
+    background-image: url('../images/pix/pacman_R.gif');
+}
+
+.pacman-up {
+    background-image: url('../images/pix/pacman_U.gif');
+}
+
+.pacman-down {
+    background-image: url('../images/pix/pacman_D.gif');
+}
+
+.pacman::after {
+    content: ' ';
+    color: rgb(0, 211, 197);
+    position: relative;
+    top: -13.4px;
+    right: -19.2px;
+    font-size: 1rem;
+}
+
+.dot {
+    background-image: url('../images/pix/dot.png');
+    background-size: 10px 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.lg-dot {
+    background-image: url('../images/pix/dot.png');
+    background-size: 23px 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.gameOn, .gameover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameover {
+    flex-direction: column;
+    display: none;
+}
+
+.blink {
+    filter : grayscale(100%) invert(100%)
+}
+
+h1 {
+    padding: 20px;
+    color: yellow;
+    font-size: 2rem;
+}
+
+h2 {
+    padding: 20px;
+    color: white;
+    font-size: 2rem;
+}
+
+p {
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+
+img {
+    width: 100%;
+}
+
+.preload {
+    display: none;
+}
+
+
+html, body, div, span, object, iframe,
+h1, h2, p, blockquote, pre, small, center,
+table, tr, th, td, canvas, footer, header, 
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
