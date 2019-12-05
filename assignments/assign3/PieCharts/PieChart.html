@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Pies</title>
+
+<script language="JavaScript">
+<!-- 
+
+        function drawPie(obj,perc1,perc2) {
+
+		
+                 perc3 = (100 - perc1 - perc2) * 0.01 * Math.PI * 2;
+		 perc2 = perc2 * 0.01 * Math.PI * 2;
+		 perc1 = perc1 * 0.01 * Math.PI * 2;
+
+
+
+            if (obj.getContext) {
+                var ctx = obj.getContext('2d');
+
+		ctx.fillStyle = 'rgb(255,0,0)'; // color 1
+		ctx.beginPath();
+		ctx.moveTo(25,25);
+                ctx.arc(25,25,25, 0, perc1);
+		ctx.closePath();
+                ctx.fill();
+
+
+		ctx.fillStyle = 'rgb(0,255,0)'; // color 2 
+                ctx.beginPath();
+		ctx.moveTo(25,25);
+                ctx.arc(25,25,25, perc1, perc1 + perc2);
+		ctx.closePath();
+                ctx.fill();
+
+		ctx.fillStyle = 'rgb(0,0,255)'; // color 3 
+		ctx.beginPath();
+		ctx.moveTo(25,25);
+                ctx.arc(25,25,25, perc1+perc2, Math.PI*2);
+		ctx.closePath();
+                ctx.fill();
+
+
+	        ctx.stroke();
+
+
+
+
+            } 
+        }
+
+function drawAll(){
+
+	drawPie(document.getElementById("Can1"),50,25); // 50%,25%,25%
+	drawPie(document.getElementById("Can2"),33,33); // 33%,33%,34%
+	drawPie(document.getElementById("Can3"),25,45); // 25%,45%,30% 
+
+
+}
+
+//-->
+</script>
+</head>
+
+  <body onLoad="drawAll();">
+    <table border=1>
+	    <tr>
+	    <td> example 1 </td>
+	    <td> <canvas id="Can1" width="50" height="50" style="border: solid 3px #0000ef"></canvas> </td>
+	    </tr>
+
+	    <tr>
+	    <td> example 2</td>
+	    <td> <canvas id="Can2" width="50" height="50" style="border: solid 3px #0000ef"></canvas> </td>
+	    </tr>
+
+            <tr>
+	    <td> example 3</td>
+	    <td> <canvas id="Can3" width="50" height="50" style="border: solid 3px #0000ef"></canvas> </td>
+	    </tr>
+    </table>
+
+  </body>
+</html>

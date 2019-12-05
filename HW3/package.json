@@ -1,0 +1,19 @@
+{
+  "name": "hw3",
+  "version": "1.0.0",
+  "description": "Survery Processing",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anricoj1/CSC443.git"
+  },
+  "author": "Jason Anrico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anricoj1/CSC443/issues"
+  },
+  "homepage": "https://github.com/anricoj1/CSC443#readme"
+}

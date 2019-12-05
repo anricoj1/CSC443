@@ -1,0 +1,202 @@
+<HTML>
+<HEAD>
+<title>Assignment #3</title>
+<META NAME="keywords" CONTENT="Assignment #3">
+<style type="text/css">
+<!--
+td.X {border:groove 1px #0000ff;padding:2px;font-size:10pt;}
+-->
+</style>
+</HEAD>
+<body bgcolor="#ffffff" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+
+<table border=0 width=600 cellspacing=0 cellpadding=0>
+<tr><td align=center>
+
+<font size=+1>
+<b>CSC 443.01 (Fall 2019)</b><br>
+<br>
+<u>Programming Assignment #3</u><br>
+(Given 11/19/19 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Due: 12/10/19)<br>
+<br>
+</font>
+</td><tr>
+<tr><td>
+<font size=+1> Survey Processing:</font>
+<font size=+0>
+</td></tr>
+<tr><td>
+<br>
+Write a <tt>node.js</tt> script that will collect simple survey data, and
+present the summary of the submitted results. 
+</td></tr>
+<tr><td>
+	The original form is shown in the following picture:<br>
+	<center><a href="pix/one.jpg"><img height=300 src="pix/one.jpg"></a></center>
+	Once the form is submitted, the script will collect and save the submitted data and generate
+	the summary:<br>
+	<center><a href="pix/two.jpg"><img height=300 src="pix/two.jpg"></a></center>
+</td></tr>
+<tr><td>
+
+</td></tr>
+
+<tr><td>
+You are required to use the following files (please follow the naming):
+<ul style="margin-top:0">
+<li> <b><tt>Form.html</tt></b> (the form; it is in a separate <b>.html</b> document)
+<li> <b><tt>Results.js</tt></b> (the <b><tt>node.js</tt></b> server script)
+<li> <b><tt>Results.txt</tt></b> (text file for statistics)
+<li>  additional <b><tt>.js</tt></b> script (module) to produce pie charts, if needed. (Pie Chart example included) 
+</ul>
+<hr>
+Please use only modules presented in class!!!!
+<br>
+I.e. use <b><tt>require('http')</tt></b>, <b><tt>require('url')</tt></b> and <b><tt>require('fs')</tt></b> only.<br>
+No other library/module is to be used.<hr>
+</td></tr>
+<tr><td>
+		<br>
+		To calculate the statistics, the script will need to collect the frequencies 
+		of each submitted answer for each question. The frequencies are to be stored in 
+		the <tt>Results.txt</tt> file (follow the format). The frequencies for the example above are:<br>
+<pre style='border: groove 2px #0000ff;margin:0 0 0 80;width:200'>
+0,0,5,2,0
+0,0,7,0,0
+0,2,2,3,0
+1,2,2,2,0
+0,0,5,2,0
+0,1,3,2,1
+0,0,3,2,2
+0,0,6,1,0 </pre>               
+For example, 5 in the first row means that there were 5 users that selected the third radio button
+(denoted 'neutral') for the first question.
+<br>
+<br>
+To calculate the average for any question this formula can be used:
+<table align=center cellspacing=0 cellpadding=0>
+	<tr><td rowspan=3 style='padding: 5 0 0 0;'><tt><b>Avg&nbsp;=&nbsp;</b></tt></td>
+		<td>
+<tt><b> 
+1&middot;f<sub>1</sub>+2&middot;f<sub>2</sub>+3&middot;f<sub>3</sub>+4&middot;f<sub>4</sub>+5&middot;f<sub>5</sub>
+</b></tt></td></tr>
+<tr><td style='border-bottom:solid 1px #000000;line-height:1px;'>&nbsp;</td></tr>
+<tr><td align=center><tt><b>total</b></tt></tr>
+</table>
+where
+<table align=center cellspacing=0 cellpadding=0>
+	<tr><td ><tt><b>total&nbsp;=&nbsp;</b></tt></td>
+		<td>
+<tt><b> 
+f<sub>1</sub>+f<sub>2</sub>+f<sub>3</sub>+f<sub>4</sub>+f<sub>5</sub>
+</b></tt></td></tr>
+</table>
+<tt><b> 
+f<sub>1</sub>,f<sub>2</sub>,f<sub>3</sub>,f<sub>4</sub>,f<sub>5</sub>  
+</b></tt> are the collected frequencies  for the specific question.
+<br><br>
+For our example the average for the first question given the frequencies:<br>
+<center><tt><b>
+f<sub>1</sub>,f<sub>2</sub>,f<sub>3</sub>,f<sub>4</sub>,f<sub>5</sub>  
+</b></tt> = <tt><b>0,0,5,2,0 </b></tt>
+</center><br>
+<table align=center cellspacing=0 cellpadding=0>
+	<tr><td ><tt><b>total&nbsp;=&nbsp;</b></tt></td>
+		<td>
+<tt><b> 
+0+0+5+2+0
+</b></tt></td><td ><tt><b>&nbsp;=&nbsp;7</b></tt></td> </tr>
+</table><br>
+<table align=center cellspacing=0 cellpadding=0>
+	<tr><td rowspan=3 style='padding: 5 0 0 0;'><tt><b>Avg&nbsp;=&nbsp;</b></tt></td>
+		<td>
+<tt><b> 
+1&middot;0+2&middot;0+3&middot;5+4&middot;2+5&middot;0
+</b></tt></td>
+<td rowspan=3 style='padding: 5 0 0 0;'><tt><b>&nbsp;=&nbsp;3.2857...~=3.29</b></tt></td>
+</tr>
+<tr><td style='border-bottom:solid 1px #000000;line-height:1px;'>&nbsp;</td></tr>
+<tr><td align=center><tt><b>total</b></tt></tr>
+
+</table>
+
+<br>
+The pie charts are based on the percentages. For the first question:
+<center><tt><b>
+f<sub>1</sub>,f<sub>2</sub>,f<sub>3</sub>,f<sub>4</sub>,f<sub>5</sub>  
+</b></tt> = <tt><b>0,0,5,2,0 </b></tt>
+</center><br>
+<table align=center >
+	<tr>    <td class='X' align=center>%</td>
+		<td class='X' align=center> arc (&deg;deg)</td><td class='X' align=center>start</td>
+		<td class='X' align=center>end</td><td class='X' align=center>color</td></tr>
+		<td class='X'><tt><b>f<sub>1</sub>/total&nbsp;=&nbsp;0/7&nbsp;=&nbsp;0%</b></tt></td>
+		<td class='X' ><tt><b>0%&middot;360&deg;=0&deg;</b></tt></td>
+		<td class='X'><tt><b>0&deg;</b></tt></td><td class='X'><tt><b>0&deg;</b></tt></td>
+		<td class='X' style='background-color:#ff0000' align=center>#ff0000</td></tr>
+	<tr><td class='X'><tt><b>f<sub>2</sub>/total&nbsp;=&nbsp;0/7&nbsp;=&nbsp;0%</b></tt></td>
+		<td class='X'><tt><b>0%&middot;360&deg;=0&deg;</b></tt></td>
+		<td class='X'><tt><b>0&deg;</b></tt></td><td class='X'><tt><b>0&deg;</b></tt></td>
+		<td class='X' style='background-color:#bf4000' align=center>#bf4000</td></tr>
+	<tr>  
+		<td class='X'><tt><b>f<sub>3</sub>/total&nbsp;=&nbsp;5/7&nbsp;=&nbsp;71%</b></tt></td>
+		<td class='X'><tt><b>71%&middot;360&deg;=257&deg;</b></tt></td>
+		<td class='X'><tt><b>0&deg;</b></tt></td><td class='X'><tt><b>257&deg;</b></tt></td>
+		<td class='X' style='background-color:#808000' align=center>#808000</td></tr>
+	<tr>    
+		<td class='X'><tt><b>f<sub>4</sub>/total&nbsp;=&nbsp;2/7&nbsp;=&nbsp;29%</b></tt></td>
+		<td class='X'><tt><b>29%&middot;360&deg;=103&deg;</b></tt></td>
+		<td class='X'><tt><b>257&deg;</b></tt></td><td class='X'><tt><b>360&deg;</b></tt></td>
+		<td class='X' style='background-color:#40bf00' align=center>#40bf00</td></tr>
+	<tr>    
+		<td class='X'><tt><b>f<sub>5</sub>/total&nbsp;=&nbsp;0/7&nbsp;=&nbsp;0%</b></tt></td>
+		<td class='X'><tt><b>0%&middot;360&deg;=0&deg;</b></tt></td>
+		<td class='X'><tt><b>360&deg;</b></tt></td><td class='X'><tt><b>360&deg;</b></tt></td>
+		<td class='X' style='background-color:#00ff00' align=center>#00ff00</td></tr>
+</table>
+
+</td></tr>
+
+
+<tr><td>
+		<br><br>
+All the requested files should be zipped and submitted through the blackboard.
+
+The html and script files should include the following information:<br>
+<table border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td align=left> <tt>&lt;!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt></td>
+<td align=left> <tt> Name:</tt></td>
+<td align=left> <tt> &nbsp; </tt></td>
+</tr>
+<tr>
+<td align=left> <tt> &nbsp </tt></td>
+<td align=left> <tt> Course: </tt></td>
+<td align=left> <tt> &nbsp;&nbsp;443 </tt></td>
+</tr>
+<tr>
+<td align=left>  <tt> &nbsp</tt> </td>
+<td align=left> <tt> Assignment: </tt></td>
+<td align=left> <tt> &nbsp;&nbsp;#3 </tt></td>
+</tr>
+<tr>
+<td align=left> <tt> &nbsp;&nbsp;--&gt; </tt></td>
+<td align=left> <tt> &nbsp;</tt> </td>
+<td align=left> <tt> &nbsp;</tt> </td>
+</tr>
+</table>
+
+The grade will be based on the code complexity and correctness.
+<br>
+<br>
+</td>
+</tr>
+
+
+
+
+</font>
+
+</table>
+</body>
+</html>
