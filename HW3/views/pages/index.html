@@ -1,8 +1,140 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Survey Processing</title>   
+        <title>Survey Processing</title>
+        <style>
+            table, tr, td, th {
+                border: 1px solid black;
+            }
+
+            .colspan2 {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+
+            .cenBtn {
+                margin-left: 300px;
+            }
+
+            .btnRight {
+                margin-left: 10px;
+            }
+
+            .spanRow {
+                height: 50px;
+            }
+        </style>
     </head>
-    <body>
+    <body>        
+        <div class="container">
+            <h1>CSC 443 - HW3 Survey Processing</h1>
+
+            <table>
+                <tr>
+                    <th colspan="8">Survey (CSC 443)</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">#</td>
+                    <td rowspan="2">Question</td>
+                    <td>Strongly</td>
+                    <td>Somewhat</td>
+                    <td></td>
+                    <td>Somewhat</td>
+                    <td>Strongly</td>
+                </tr>
+                <tr>
+                    <td class="colspan2" colspan="2">Disagree</td>
+                    <td>Neutral</td>
+                    <td class="colspan2" colspan="2">Agree</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td colspan="1">This course helped me develop problem-solving skills.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>This course was very challenging.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>My programming ability increased after taking this course.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>I will list 'Javascript' on my resume.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>I will list 'Perl scripting' on my resume.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>I will list 'PHP scripting' on my resume.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>If I had more time, I would have done better in this course.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>I will recommend this course to other students.</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" colspan="2"></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td class="spanRow" colspan="8">
+                        <button class="cenBtn">Submit</button>
+                        <button class="btnRight">Reset</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
