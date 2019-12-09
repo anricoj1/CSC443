@@ -24,13 +24,13 @@ on data sent.
 - npm start
 
 if you have nodemon installed:
-    - npm install
-    - nodemon server
+- npm install
+- nodemon server
 
 if you dont use nodemon:
-    - This package restarts the server when changes are made.
-    - npm install nodemon -g 
-    - -g is to globally install it on your local machine
+- This package restarts the server when changes are made.
+- npm install nodemon -g 
+- -g is to globally install it on your local machine
 
 
 
