@@ -3,7 +3,60 @@
     <head>
         <title>Survery Processing</title>
     </head>
-    <body>
-        <h2>Pie Charts!!</h2>
+    <body onLoad="drawThis();">
+        <table border=1>
+            <tr>
+                <td></td>
+                <td><canvas id="Can1" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><canvas id="Can2" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+            </tr>
+        </table>
+        <script>
+            function drawPie(obj, perc1, perc2) {
+                perc3 = (100 - perc1 - perc2) * 0.01 * Math.PI * 2;
+                perc2 = perc2 * 0.01 * Math.PI * 2;
+                perc1 = perc1 * 0.01 * Math.PI * 2;
+
+                if (obj.getContext) {
+                    var ctx = obj.getContext('2d');
+
+                    ctx.fillStyle = 'rgb(255, 0, 0)';
+                    ctx.beginPath();
+                    ctx.moveTo(25, 25);
+                    ctx.arc(25, 25, 25, 0, perc1);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = 'rgb(0, 255, 0)';
+                    ctx.beginPath();
+                    ctx.moveTo(25, 25);
+                    ctx.arc(25, 25, 25, perc1, perc1 + perc2);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = 'rgb(0,0,255)'; // color 3 
+                    ctx.beginPath();
+                    ctx.moveTo(25,25);
+                    ctx.arc(25,25,25, perc1+perc2, Math.PI*2);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.stroke();
+                }
+            }
+
+            function drawThis() {
+                drawPie(document.getElementById("Can1"),50,25); 
+                drawPie(document.getElementById("Can2"),33,33); 
+                drawPie(document.getElementById("Can3"),25,45); 
+            }
+        </script>
     </body>
 </html>
