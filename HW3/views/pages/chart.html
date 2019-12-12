@@ -18,6 +18,7 @@
                 <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
             </tr>
         </table>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             function drawPie(obj, perc1, perc2) {
                 perc3 = (100 - perc1 - perc2) * 0.01 * Math.PI * 2;
@@ -57,6 +58,16 @@
                 drawPie(document.getElementById("Can2"),33,33); 
                 drawPie(document.getElementById("Can3"),25,45); 
             }
+            
+            $(document).ready(function() {
+                loadChart();
+
+                function loadChart() {
+                    $.getJSON('/data', function(data) {
+                        console.log(data);
+                    })
+                }
+            })
         </script>
     </body>
 </html>

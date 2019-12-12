@@ -13,17 +13,23 @@ http.createServer((req, res) => {
             index(req, res);
             break;
         case "/charts":
-            thisChart(req, res);
+            chartcb(req, res);
             break;
         case "/postIndex":
-            postIndex(req, res);
+            postcb(req, res);
+            break;
+        case "/data":
+            datacb(req, res);
+            break;
+        case "/error":
+            errorcb(req, res);
             break;
     }
 }).listen(8080);
 console.log("Server Running at http://localhost:8080");
 
 
-
+// index function
 var index = (req, res) => {
     res.writeHead(200, {
         'Content-Type' : 'text/html'
@@ -40,21 +46,44 @@ var index = (req, res) => {
     });
 };
 
-
-var postIndex = (req, res) => {
+// post table form callback function
+var postcb = (req, res) => {
     if (req.method === 'POST') {
         var form = '/?';
         req.on('data', (chunk) => {
             form += chunk.toString();
         });
         req.on('end', () => {
-            q = url.parse(form, true).query;
-            console.log(q);
-        })
+            result = url.parse(form, true).query;
+            var this_result = JSON.stringify(result);
+            fs.writeFile('results.txt', this_result, (err) => { // here we write to file
+                if (err) {
+                    res.writeHead(404);
+                    res.write("There was an error: " + err);
+                    index(req, res);
+                } else {
+                    res.writeHead(200);
+                    chartcb(req, res);
+                }
+            })
+        });
     }
 }
 
-var thisChart = (req, res) => {
+// here we read file res as json
+var datacb = (req, res) => {
+    res.writeHead(200, {
+        'Content-Type' : 'application/json'
+    });
+
+    fs.readFile('results.txt', null, (err, data) => {
+        res.write(data);
+        res.end();
+    });
+}
+
+// chart view callback function
+var chartcb = (req, res) => {
     res.writeHead(200, {
         'Content-Type' : 'text/html'
     });
@@ -69,5 +98,18 @@ var thisChart = (req, res) => {
         res.end();
     });
 };
+
+
+
+// error callback function
+var errorcb = (req, res) => {
+    res.writeHead(200, {
+        'Content-Type' : 'text/html'
+    });
+
+    fs.readFile(rootPath + 'error.html', (err, data) => {
+        res.write(data);
+    });
+}
 
 
