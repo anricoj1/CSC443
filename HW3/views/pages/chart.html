@@ -44,58 +44,58 @@
                 <tr>
                     <td>1</td>
                     <td>This course helped me develop problem-solving skills.</td>
-                    <td>70</td>
+                    <td id="q1_a"></td>
                     <td><canvas id="Can1" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q1_t"></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>This course was very challenging.</td>
-                    <td>70</td>
+                    <td id="q2_a"></td>
                     <td><canvas id="Can2" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q2_t"></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>My programming ability increased after taking this course.</td>
-                    <td>70</td>
+                    <td id="q3_a"></td>
                     <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q3_t"></td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>I will list 'Javascript' on my resume.</td>
-                    <td>70</td>
-                    <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q4_a"></td>
+                    <td><canvas id="Can4" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q4_t"></td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>I will list 'Perl scripting' on my resume.</td>
-                    <td>70</td>
-                    <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q5_a"></td>
+                    <td><canvas id="Can5" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q5_t"></td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td>I will list 'PHP scripting' on my resume.</td>
-                    <td>70</td>
-                    <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q6_a"></td>
+                    <td><canvas id="Can6" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q6_t"></td>
                 </tr>
                 <tr>
                     <td>7</td>
                     <td>If I had more time, I would have done better in this course.</td>
-                    <td>70</td>
-                    <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q7_a"></td>
+                    <td><canvas id="Can7" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q7_t"></td>
                 </tr>
                 <tr>
                     <td>8</td>
                     <td>I will recommend this course to other students.</td>
-                    <td>70</td>
-                    <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td>7</td>
+                    <td id="q8_a"></td>
+                    <td><canvas id="Can8" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q8_t"></td>
                 </tr>
             </table>
         </div>
@@ -138,16 +138,240 @@
             function drawThis() {
                 drawPie(document.getElementById("Can1"),50,25); 
                 drawPie(document.getElementById("Can2"),33,33); 
-                drawPie(document.getElementById("Can3"),25,45); 
+                drawPie(document.getElementById("Can3"),25,45);
+                drawPie(document.getElementById("Can4"),50,25); 
+                drawPie(document.getElementById("Can5"),33,33); 
+                drawPie(document.getElementById("Can6"),25,45);
+                drawPie(document.getElementById("Can7"),50,25); 
+                drawPie(document.getElementById("Can8"),33,33); 
+
             }
             
             $(document).ready(function() {
                 loadChart();
 
                 function loadChart() {
-                    $.getJSON('/data', function(data) {
-                        console.log(data);
-                    })
+                    $.getJSON('/data', function(stats) {
+                        var data = stats.results;
+                        var q1_neutral = [];
+                        var q1_disSomewhat = [];
+                        var q1_disStrong = [];
+                        var q1_agreeSome = [];
+                        var q1_agreeStrong = [];
+                        var q2_neutral = [];
+                        var q2_disSomewhat = [];
+                        var q2_disStrong = [];
+                        var q2_agreeSome = [];
+                        var q2_agreeStrong = [];
+                        var q3_neutral = [];
+                        var q3_disSomewhat = [];
+                        var q3_disStrong = [];
+                        var q3_agreeSome = [];
+                        var q3_agreeStrong = [];
+                        var q4_neutral = [];
+                        var q4_disSomewhat = [];
+                        var q4_disStrong = [];
+                        var q4_agreeSome = [];
+                        var q4_agreeStrong = [];
+                        var q4_neutral = [];
+                        var q4_disSomewhat = [];
+                        var q4_disStrong = [];
+                        var q4_agreeSome = [];
+                        var q4_agreeStrong = [];
+                        var q5_neutral = [];
+                        var q5_disSomewhat = [];
+                        var q5_disStrong = [];
+                        var q5_agreeSome = [];
+                        var q5_agreeStrong = [];
+                        var q6_neutral = [];
+                        var q6_disSomewhat = [];
+                        var q6_disStrong = [];
+                        var q6_agreeSome = [];
+                        var q6_agreeStrong = [];
+                        var q7_neutral = [];
+                        var q7_disSomewhat = [];
+                        var q7_disStrong = [];
+                        var q7_agreeSome = [];
+                        var q7_agreeStrong = [];
+                        var q8_neutral = [];
+                        var q8_disSomewhat = [];
+                        var q8_disStrong = [];
+                        var q8_agreeSome = [];
+                        var q8_agreeStrong = [];
+
+
+                        for (var i = 0; i < data.length; i++) {
+                            var object = Object.keys(data[i]);
+                            for (var j = 0; j < object.length; j++) {
+                                if (object[j] === 'q1_neutral') {
+                                    q1_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q1_disStrong') {
+                                    q1_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q1_disSomewhat') {
+                                    q1_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q1_agreeSome') {
+                                    q1_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q1_agreeStrong') {
+                                    q1_agreeStrong.push(object[j])
+                                }
+                                if (object[j] === 'q2_neutral') {
+                                    q2_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q2_disStrong') {
+                                    q2_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q2_disSomewhat') {
+                                    q2_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q2_agreeSome') {
+                                    q2_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q2_agreeStrong') {
+                                    q2_agreeStrong.push(object[j])
+                                }
+                                if (object[j] === 'q3_neutral') {
+                                    q3_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q3_disStrong') {
+                                    q3_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q3_disSomewhat') {
+                                    q3_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q3_agreeSome') {
+                                    q3_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q3_agreeStrong') {
+                                    q3_agreeStrong.push(object[j])
+                                }
+                                if (object[j] === 'q4_neutral') {
+                                    q4_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q4_disStrong') {
+                                    q4_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q4_disSomewhat') {
+                                    q4_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q4_agreeSome') {
+                                    q4_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q4_agreeStrong') {
+                                    q4_agreeStrong.push(object[j])
+                                }
+                                if (object[j] === 'q5_neutral') {
+                                    q5_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q5_disStrong') {
+                                    q5_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q5_disSomewhat') {
+                                    q5_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q5_agreeSome') {
+                                    q5_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q5_agreeStrong') {
+                                    q5_agreeStrong.push(object[j])
+                                }
+                                if (object[j] === 'q6_neutral') {
+                                    q6_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q6_disStrong') {
+                                    q6_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q6_disSomewhat') {
+                                    q6_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q6_agreeSome') {
+                                    q6_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q6_agreeStrong') {
+                                    q6_agreeStrong.push(object[j])
+                                }
+                                if (object[j] === 'q7_neutral') {
+                                    q7_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q7_disStrong') {
+                                    q7_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q7_disSomewhat') {
+                                    q7_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q7_agreeSome') {
+                                    q7_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q7_agreeStrong') {
+                                    q7_agreeStrong.push(object[j])
+                                }
+                                if (object[j] === 'q8_neutral') {
+                                    q8_neutral.push(object[j])
+                                }
+                                if (object[j] === 'q8_disStrong') {
+                                    q8_disStrong.push(object[j])
+                                }
+                                if (object[j] === 'q8_disSomewhat') {
+                                    q8_disSomewhat.push(object[j])
+                                }
+                                if (object[j] === 'q8_agreeSome') {
+                                    q8_agreeSome.push(object[j])
+                                }
+                                if (object[j] === 'q8_agreeStrong') {
+                                    q8_agreeStrong.push(object[j])
+                                }
+                                 
+                            }
+                        }
+                        var q1 = [q1_neutral.length, q1_disSomewhat.length, q1_disStrong.length, q1_agreeSome.length, q1_agreeStrong.length];
+                        var q2 = [q2_neutral.length, q2_disSomewhat.length, q2_disStrong.length, q2_agreeSome.length, q2_agreeStrong.length];
+                        var q3 = [q3_neutral.length, q3_disSomewhat.length, q3_disStrong.length, q3_agreeSome.length, q3_agreeStrong.length];
+                        var q4 = [q4_neutral.length, q4_disSomewhat.length, q4_disStrong.length, q4_agreeSome.length, q4_agreeStrong.length];
+                        var q5 = [q5_neutral.length, q5_disSomewhat.length, q5_disStrong.length, q5_agreeSome.length, q5_agreeStrong.length];
+                        var q6 = [q6_neutral.length, q6_disSomewhat.length, q6_disStrong.length, q6_agreeSome.length, q6_agreeStrong.length];
+                        var q7 = [q7_neutral.length, q7_disSomewhat.length, q7_disStrong.length, q7_agreeSome.length, q7_agreeStrong.length];
+                        var q8 = [q8_neutral.length, q8_disSomewhat.length, q8_disStrong.length, q8_agreeSome.length, q8_agreeStrong.length];
+
+
+                        var arr = [q1, q2, q3, q4, q5, q6, q7, q8]
+                        console.log(arr);
+                        for (var k = 0; k < arr.length; k++) {
+                            var total = arr[k].reduce((a,b) => a + b, 0);
+                            var avg1 = ((1 * arr[0][0]) + (2 * arr[0][1]) + (3 * arr[0][2]) + (4 * arr[0][3]) + (5 * arr[0][4])) / total;
+                            var avg2 = ((1 * arr[1][0]) + (2 * arr[1][1]) + (3 * arr[1][2]) + (4 * arr[1][3]) + (5 * arr[1][4])) / total;
+                            var avg3 = ((1 * arr[2][0]) + (2 * arr[2][1]) + (3 * arr[2][2]) + (4 * arr[2][3]) + (5 * arr[2][4])) / total;
+                            var avg4 = ((1 * arr[3][0]) + (2 * arr[3][1]) + (3 * arr[3][2]) + (4 * arr[3][3]) + (5 * arr[3][4])) / total;
+                            var avg5 = ((1 * arr[4][0]) + (2 * arr[4][1]) + (3 * arr[4][2]) + (4 * arr[4][3]) + (5 * arr[4][4])) / total;
+                            var avg6 = ((1 * arr[5][0]) + (2 * arr[5][1]) + (3 * arr[5][2]) + (4 * arr[5][3]) + (5 * arr[5][4])) / total;
+                            var avg7 = ((1 * arr[6][0]) + (2 * arr[6][1]) + (3 * arr[6][2]) + (4 * arr[6][3]) + (5 * arr[6][4])) / total;
+                            var avg8 = ((1 * arr[7][0]) + (2 * arr[7][1]) + (3 * arr[7][2]) + (4 * arr[7][3]) + (5 * arr[7][4])) / total;
+                            
+                            // total queries
+                            document.getElementById("q1_t").innerHTML = total;
+                            document.getElementById("q2_t").innerHTML = total;
+                            document.getElementById("q3_t").innerHTML = total;
+                            document.getElementById("q4_t").innerHTML = total;
+                            document.getElementById("q5_t").innerHTML = total;
+                            document.getElementById("q6_t").innerHTML = total;
+                            document.getElementById("q7_t").innerHTML = total;
+                            document.getElementById("q8_t").innerHTML = total;
+
+                            // averages
+                            document.getElementById("q1_a").innerHTML = avg1;
+                            document.getElementById("q2_a").innerHTML = avg2;
+                            document.getElementById("q3_a").innerHTML = avg3;
+                            document.getElementById("q4_a").innerHTML = avg4;
+                            document.getElementById("q5_a").innerHTML = avg5;
+                            document.getElementById("q6_a").innerHTML = avg6;
+                            document.getElementById("q7_a").innerHTML = avg7;
+                            document.getElementById("q8_a").innerHTML = avg8;
+                        }
+                        
+
+                    });
                 }
             })
         </script>

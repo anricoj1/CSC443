@@ -1,0 +1,44 @@
+{
+    "results" : [
+        {
+            "q1_neutral" : "on",
+            "q2_neutral" : "on",
+            "q3_neutral" : "on",
+            "q4_disSomewhat" : "on",
+            "q5_neutral" : "on",
+            "q6_neutral" : "on",
+            "q7_neutral" : "on",
+            "q8_neutral" : "on"
+        },
+        {
+            "q1_neutral" : "on",
+            "q2_neutral" : "on",
+            "q3_neutral" : "on",
+            "q4_disSomewhat" : "on",
+            "q5_neutral" : "on",
+            "q6_neutral" : "on",
+            "q7_neutral" : "on",
+            "q8_neutral" : "on"
+        },
+        {
+            "q1_neutral" : "on",
+            "q2_neutral" : "on",
+            "q3_neutral" : "on",
+            "q4_disSomewhat" : "on",
+            "q5_neutral" : "on",
+            "q6_neutral" : "on",
+            "q7_neutral" : "on",
+            "q8_neutral" : "on"
+        },
+        {
+            "q1_neutral" : "on",
+            "q2_agreeSome" : "on",
+            "q3_agreeSome" : "on",
+            "q4_agreeStrong" : "on",
+            "q5_disStrong" : "on",
+            "q6_disStrong" : "on",
+            "q7_agreeSome" : "on",
+            "q8_agreeSome" : "on"
+        }
+    ]
+}
