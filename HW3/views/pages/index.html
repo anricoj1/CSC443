@@ -23,16 +23,36 @@
             .spanRow {
                 height: 50px;
             }
+
+            .paddTop {
+                padding-top: 100px;
+            }
+
+            .cenTitle {
+                text-align: center;
+            }
         </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     </head>
-    <body>        
-        <div class="container">
+    <body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">CSC 443</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li><a style="color:white" class="nav-link" href="/charts">Charts</a></li>
+                </ul>
+            </div>
+        </nav>            
+        <div class="container paddTop">
             <h1>CSC 443 - HW3 Survey Processing</h1>
 
             <form id="frmThis" name="frmThis" method="post" action="/postIndex">
                 <table>
                     <tr>
-                        <th colspan="8">Survey (CSC 443)</th>
+                        <th class="cenTitle" colspan="8">Survey (CSC 443)</th>
                     </tr>
                     <tr>
                         <td rowspan="2">#</td>
@@ -138,5 +158,7 @@
                 </table>
             </form>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>

@@ -4,6 +4,7 @@ var fs = require('fs');
 
 // rootPath
 var rootPath = './views/pages/';
+var pacman = './views/pages/pacman/';
 
 http.createServer((req, res) => {
     var parseUrl = url.parse(req.url);
@@ -30,7 +31,7 @@ console.log("Server Running at http://localhost:8080");
 
 
 // index function
-var index = (req, res) => {
+const index = (req, res) => {
     res.writeHead(200, {
         'Content-Type' : 'text/html'
     });
@@ -47,7 +48,7 @@ var index = (req, res) => {
 };
 
 // post table form callback function
-var postcb = (req, res) => {
+const postcb = (req, res) => {
     if (req.method === 'POST') {
         var form = '/?';
         req.on('data', (chunk) => {
@@ -71,7 +72,7 @@ var postcb = (req, res) => {
 }
 
 // here we read file res as json
-var datacb = (req, res) => {
+const datacb = (req, res) => {
     res.writeHead(200, {
         'Content-Type' : 'application/json'
     });
@@ -83,7 +84,7 @@ var datacb = (req, res) => {
 }
 
 // chart view callback function
-var chartcb = (req, res) => {
+const chartcb = (req, res) => {
     res.writeHead(200, {
         'Content-Type' : 'text/html'
     });
@@ -100,9 +101,8 @@ var chartcb = (req, res) => {
 };
 
 
-
 // error callback function
-var errorcb = (req, res) => {
+const errorcb = (req, res) => {
     res.writeHead(200, {
         'Content-Type' : 'text/html'
     });
