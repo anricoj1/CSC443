@@ -18,8 +18,8 @@ http.createServer((req, res) => {
             main.resjson(req, res);
             break;
         case '/post':
-            main.post(req, res)
-
+            main.post(req, res);
+            break;
     }
 }).listen(8080);
 console.log("Server Running At http://localhost:8080");

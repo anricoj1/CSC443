@@ -1,76 +1,60 @@
 {
     "results" : [
         {
-            "q1" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 0,
+            "disagree_somewhat" : 0,
+            "disagree_strongly" : 5,
+            "agree_somewhat" : 2,
+            "agree_strongly" : 0
         },
         {
-            "q2" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 0,
+            "disagree_somewhat" : 0,
+            "disagree_strongly" : 7,
+            "agree_somewhat" : 0,
+            "agree_strongly" : 0
         },
         {
-            "q3" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 0,
+            "disagree_somewhat" : 2,
+            "disagree_strongly" : 2,
+            "agree_somewhat" : 3,
+            "agree_strongly" : 0
         },
         {
-            "q4" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 1,
+            "disagree_somewhat" : 2,
+            "disagree_strongly" : 2,
+            "agree_somewhat" : 2,
+            "agree_strongly" : 0
         },
         {
-            "q5" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 0,
+            "disagree_somewhat" : 0,
+            "disagree_strongly" : 5,
+            "agree_somewhat" : 2,
+            "agree_strongly" : 0
         },
         {
-            "q6" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 0,
+            "disagree_somewhat" : 1,
+            "disagree_strongly" : 3,
+            "agree_somewhat" : 2,
+            "agree_strongly" : 1   
         },
         {
-            "q7" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 0,
+            "disagree_somewhat" : 0,
+            "disagree_strongly" : 3,
+            "agree_somewhat" : 2,
+            "agree_strongly" : 2
         },
         {
-            "q8" : {
-                "neutral" : 0,
-                "disagree_somewhat" : 0,
-                "disagree_strongly" : 0,
-                "agree_somewhat" : 0,
-                "agree_strongly" : 0
-            }
+            "neutral" : 0,
+            "disagree_somewhat" : 0,
+            "disagree_strongly" : 6,
+            "agree_somewhat" : 1,
+            "agree_strongly" : 0
         }     
     ]
 }

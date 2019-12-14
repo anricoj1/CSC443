@@ -5,13 +5,10 @@
         <style>
             table, tr, td, th {
                 border: 1px solid black;
+                text-align: center;
             }
             .paddTop {
                 padding-top: 100px;
-            }
-
-            .cenTitle {
-                text-align: center;
             }
         </style>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -33,7 +30,7 @@
             <h1>Survey Results</h1>
             <table>
                 <tr>
-                    <th class="cenTitle" colspan="6">Survey Results (CSC 443)</th>
+                    <th colspan="6">Survey Results (CSC 443)</th>
                 </tr>
                 <tr>
                     <td>#</td>
@@ -45,58 +42,58 @@
                 <tr>
                     <td>1</td>
                     <td>This course helped me develop problem-solving skills.</td>
-                    <td id="q1_a"></td>
+                    <td id="q1_average"></td>
                     <td><canvas id="Can1" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q1_t"></td>
+                    <td id="q1_total"></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>This course was very challenging.</td>
-                    <td id="q2_a"></td>
+                    <td id="q2_average"></td>
                     <td><canvas id="Can2" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q2_t"></td>
+                    <td id="q2_total"></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>My programming ability increased after taking this course.</td>
-                    <td id="q3_a"></td>
+                    <td id="q3_average"></td>
                     <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q3_t"></td>
+                    <td id="q3_total"></td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>I will list 'Javascript' on my resume.</td>
-                    <td id="q4_a"></td>
+                    <td id="q4_average"></td>
                     <td><canvas id="Can4" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q4_t"></td>
+                    <td id="q4_total"></td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>I will list 'Perl scripting' on my resume.</td>
-                    <td id="q5_a"></td>
+                    <td id="q5_average"></td>
                     <td><canvas id="Can5" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q5_t"></td>
+                    <td id="q5_total"></td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td>I will list 'PHP scripting' on my resume.</td>
-                    <td id="q6_a"></td>
+                    <td id="q6_average"></td>
                     <td><canvas id="Can6" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q6_t"></td>
+                    <td id="q6_total"></td>
                 </tr>
                 <tr>
                     <td>7</td>
                     <td>If I had more time, I would have done better in this course.</td>
-                    <td id="q7_a"></td>
+                    <td id="q7_average"></td>
                     <td><canvas id="Can7" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q7_t"></td>
+                    <td id="q7_total"></td>
                 </tr>
                 <tr>
                     <td>8</td>
                     <td>I will recommend this course to other students.</td>
-                    <td id="q8_a"></td>
+                    <td id="q8_average"></td>
                     <td><canvas id="Can8" width="50" height="50" style="border: sold 3px black;"></canvas></td>
-                    <td id="q8_t"></td>
+                    <td id="q8_total"></td>
                 </tr>
             </table>
         </div>
@@ -106,16 +103,148 @@
             getData();
 
             async function getData() {
-                var q = [1, 2, 3, 4, 5, 6, 7, 8];
                 $.getJSON('/data', (result) => {
-                    var data = result.results;
-                    for (var i = 0; i < data.length; i++) {
-                        for (var j = 0; j < q.length; j++) {
-                            console.log(data[i])
-                            console.log(q[j])
-                        }
-                    }
+                    result.results.forEach(writeTotal);
+                    result.results.forEach(writeAvg);
+                    result.results.forEach(loadPies);              
                 });
+            }
+
+            function loadPies(item, index) {
+                if (index === 0) {
+                    drawPie(document.getElementById("Can1"),average(item, index),25);
+                }
+                if (index === 1) {
+                    drawPie(document.getElementById("Can2"),average(item, index),25);
+                }
+                if (index === 2) {
+                    drawPie(document.getElementById("Can3"),average(item, index),33);
+                }
+                if (index === 3) {
+                    drawPie(document.getElementById("Can4"),average(item, index),45);
+                }
+                if (index === 4) {
+                    drawPie(document.getElementById("Can5"),average(item, index),25);
+                }
+                if (index === 5) {
+                    drawPie(document.getElementById("Can6"),average(item, index),45);
+                }
+                if (index === 6) {
+                    drawPie(document.getElementById("Can7"),average(item, index),33);
+                }
+                if (index === 7) {
+                    drawPie(document.getElementById("Can8"),average(item, index),25);
+                }  
+            }
+
+            function drawPie(question, perc1, perc2) {
+                perc3 = (100 - perc1 - perc2) * 0.01 * Math.PI * 2;
+                perc2 = perc2 * 0.01 * Math.PI * 2;
+                perc1 = perc1 * 0.01 * Math.PI * 2;
+
+                if (question.getContext) {
+                    var ctx = question.getContext('2d');
+                    ctx.fillStyle = '#ff0000';
+                    ctx.beginPath();
+                    ctx.moveTo(25, 25);
+                    ctx.arc(25, 25, 25, 0, perc1);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = '#bf4000';
+                    ctx.beginPath();
+                    ctx.moveTo(25, 25);
+                    ctx.arc(25, 25, 25, perc1, perc1 + perc2);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = '#808000'; // color 3 
+                    ctx.beginPath();
+                    ctx.moveTo(25,25);
+                    ctx.arc(25,25,25, perc1+perc2, Math.PI*2);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = '#40bf00'; // color 3 
+                    ctx.beginPath();
+                    ctx.moveTo(25,25);
+                    ctx.arc(25,25,25, perc1+perc2, Math.PI*3);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = '#00ff00'; // color 3 
+                    ctx.beginPath();
+                    ctx.moveTo(25,25);
+                    ctx.arc(25,25,25, perc1+perc2, Math.PI*4);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.stroke();
+                }
+            }
+
+            function average(item, index) {
+                var avg = ((1 * item.neutral) + (2 * item.disagree_somewhat) + (3 * item.disagree_strongly) + (4 * item.agree_somewhat) + (5 * item.agree_strongly))/total(item, index);
+                return avg.toFixed(2);
+            }
+
+            function total(item, index) {
+                var total = item.neutral + item.disagree_somewhat + item.disagree_strongly + item.agree_strongly + item.agree_somewhat;
+                return total;
+            }
+
+            function writeTotal(item, index) {
+                if (index === 0) {
+                    document.getElementById("q1_total").innerHTML = total(item, index);
+                }
+                if (index === 1) {
+                    document.getElementById("q2_total").innerHTML = total(item, index);
+                }
+                if (index === 2) {
+                    document.getElementById("q3_total").innerHTML = total(item, index);
+                }
+                if (index === 3) {
+                    document.getElementById("q4_total").innerHTML = total(item, index);
+                }
+                if (index === 4) {
+                    document.getElementById("q5_total").innerHTML = total(item, index);
+                }
+                if (index === 5) {
+                    document.getElementById("q6_total").innerHTML = total(item, index);
+                }
+                if (index === 6) {
+                    document.getElementById("q7_total").innerHTML = total(item, index);
+                }
+                if (index === 7) {
+                    document.getElementById("q8_total").innerHTML = total(item, index);
+                }     
+            }
+
+            function writeAvg(item, index) {
+                if (index === 0) {
+                    document.getElementById("q1_average").innerHTML = average(item, index);
+                }
+                if (index === 1) {
+                    document.getElementById("q2_average").innerHTML = average(item, index);
+                }
+                if (index === 2) {
+                    document.getElementById("q3_average").innerHTML = average(item, index);
+                }
+                if (index === 3) {
+                    document.getElementById("q4_average").innerHTML = average(item, index);
+                }
+                if (index === 4) {
+                    document.getElementById("q5_average").innerHTML = average(item, index);
+                }
+                if (index === 5) {
+                    document.getElementById("q6_average").innerHTML = average(item, index);
+                }
+                if (index === 6) {
+                    document.getElementById("q7_average").innerHTML = average(item, index);
+                }
+                if (index === 7) {
+                    document.getElementById("q8_average").innerHTML = average(item, index);
+                }   
             }
         </script>
     </body>
