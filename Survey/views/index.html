@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Survey Processing</title>
+        <style>
+            table, tr, td, th {
+                border: 1px solid black;
+            }
+
+            .colspan2 {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+
+            .cenBtn {
+                margin-left: 300px;
+            }
+
+            .btnRight {
+                margin-left: 10px;
+            }
+
+            .spanRow {
+                height: 50px;
+            }
+
+            .paddTop {
+                padding-top: 100px;
+            }
+
+            .cenTitle {
+                text-align: center;
+            }
+        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">CSC 443</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li><a style="color:white" class="nav-link" href="/results">Charts</a></li>
+                    <li><a style="color:white" class="nav-link" href="/data">Data Raw</a></li>
+                </ul>
+            </div>
+        </nav>            
+        <div class="container paddTop">
+            <h1>CSC 443 - HW3 Survey Processing</h1>
+
+            <form id="frmThis" name="frmThis" method="post" action="/post">
+                <table>
+                    <tr>
+                        <th class="cenTitle" colspan="8">Survey (CSC 443)</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">#</td>
+                        <td rowspan="2">Question</td>
+                        <td>Strongly</td>
+                        <td>Somewhat</td>
+                        <td></td>
+                        <td>Somewhat</td>
+                        <td>Strongly</td>
+                    </tr>
+                    <tr>
+                        <td class="colspan2" colspan="2">Disagree</td>
+                        <td>Neutral</td>
+                        <td class="colspan2" colspan="2">Agree</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td colspan="1">This course helped me develop problem-solving skills.</td>
+                        <td><input type="checkbox" name="q1_disStrong"></td>
+                        <td><input type="checkbox" name="q1_disSomewhat"></td>
+                        <td><input type="checkbox" name="q1_neutral"></td>
+                        <td><input type="checkbox" name="q1_agreeSome"></td>
+                        <td><input type="checkbox" name="q1_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>This course was very challenging.</td>
+                        <td><input type="checkbox" name="q2_disStrong"></td>
+                        <td><input type="checkbox" name="q2_disSomewhat"></td>
+                        <td><input type="checkbox" name="q2_neutral"></td>
+                        <td><input type="checkbox" name="q2_agreeSome"></td>
+                        <td><input type="checkbox" name="q2_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>My programming ability increased after taking this course.</td>
+                        <td><input type="checkbox" name="q3_disStrong"></td>
+                        <td><input type="checkbox" name="q3_disSomewhat"></td>
+                        <td><input type="checkbox" name="q3_neutral"></td>
+                        <td><input type="checkbox" name="q3_agreeSome"></td>
+                        <td><input type="checkbox" name="q3_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>I will list 'Javascript' on my resume.</td>
+                        <td><input type="checkbox" name="q4_disStrong"></td>
+                        <td><input type="checkbox" name="q4_disSomewhat"></td>
+                        <td><input type="checkbox" name="q4_neutral"></td>
+                        <td><input type="checkbox" name="q4_agreeSome"></td>
+                        <td><input type="checkbox" name="q4_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>I will list 'Perl scripting' on my resume.</td>
+                        <td><input type="checkbox" name="q5_disStrong"></td>
+                        <td><input type="checkbox" name="q5_disSomewhat"></td>
+                        <td><input type="checkbox" name="q5_neutral"></td>
+                        <td><input type="checkbox" name="q5_agreeSome"></td>
+                        <td><input type="checkbox" name="q5_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>I will list 'PHP scripting' on my resume.</td>
+                        <td><input type="checkbox" name="q6_disStrong"></td>
+                        <td><input type="checkbox" name="q6_disSomewhat"></td>
+                        <td><input type="checkbox" name="q6_neutral"></td>
+                        <td><input type="checkbox" name="q6_agreeSome"></td>
+                        <td><input type="checkbox" name="q6_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>If I had more time, I would have done better in this course.</td>
+                        <td><input type="checkbox" name="q7_disStrong"></td>
+                        <td><input type="checkbox" name="q7_disSomewhat"></td>
+                        <td><input type="checkbox" name="q7_neutral"></td>
+                        <td><input type="checkbox" name="q7_agreeSome"></td>
+                        <td><input type="checkbox" name="q7_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>I will recommend this course to other students.</td>
+                        <td><input type="checkbox" name="q8_disStrong"></td>
+                        <td><input type="checkbox" name="q8_disSomewhat"></td>
+                        <td><input type="checkbox" name="q8_neutral"></td>
+                        <td><input type="checkbox" name="q8_agreeSome"></td>
+                        <td><input type="checkbox" name="q8_agreeStrong"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" colspan="2"></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td class="spanRow" colspan="8">
+                            <button class="cenBtn" type="submit">Submit</button>
+                            <button class="btnRight">Reset</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <p>I could have done much better on this but I ran out of time</p>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </body>
+</html>

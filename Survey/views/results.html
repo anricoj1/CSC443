@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Survery Processing</title>
+        <style>
+            table, tr, td, th {
+                border: 1px solid black;
+            }
+            .paddTop {
+                padding-top: 100px;
+            }
+
+            .cenTitle {
+                text-align: center;
+            }
+        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">CSC 443</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li><a style="color:white" class="nav-link" href="/results">Charts</a></li>
+                    <li><a style="color:white" class="nav-link" href="/data">Data Raw</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container paddTop">
+            <h1>Survey Results</h1>
+            <table>
+                <tr>
+                    <th class="cenTitle" colspan="6">Survey Results (CSC 443)</th>
+                </tr>
+                <tr>
+                    <td>#</td>
+                    <td class="cenTitle">Question</td>
+                    <td>Average</td>
+                    <td>Percents</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>This course helped me develop problem-solving skills.</td>
+                    <td id="q1_a"></td>
+                    <td><canvas id="Can1" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q1_t"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>This course was very challenging.</td>
+                    <td id="q2_a"></td>
+                    <td><canvas id="Can2" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q2_t"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>My programming ability increased after taking this course.</td>
+                    <td id="q3_a"></td>
+                    <td><canvas id="Can3" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q3_t"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>I will list 'Javascript' on my resume.</td>
+                    <td id="q4_a"></td>
+                    <td><canvas id="Can4" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q4_t"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>I will list 'Perl scripting' on my resume.</td>
+                    <td id="q5_a"></td>
+                    <td><canvas id="Can5" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q5_t"></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>I will list 'PHP scripting' on my resume.</td>
+                    <td id="q6_a"></td>
+                    <td><canvas id="Can6" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q6_t"></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>If I had more time, I would have done better in this course.</td>
+                    <td id="q7_a"></td>
+                    <td><canvas id="Can7" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q7_t"></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>I will recommend this course to other students.</td>
+                    <td id="q8_a"></td>
+                    <td><canvas id="Can8" width="50" height="50" style="border: sold 3px black;"></canvas></td>
+                    <td id="q8_t"></td>
+                </tr>
+            </table>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script>
+            getData();
+
+            async function getData() {
+                var q = [1, 2, 3, 4, 5, 6, 7, 8];
+                $.getJSON('/data', (result) => {
+                    var data = result.results;
+                    for (var i = 0; i < data.length; i++) {
+                        for (var j = 0; j < q.length; j++) {
+                            console.log(data[i])
+                            console.log(q[j])
+                        }
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
